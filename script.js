@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /* let num = +prompt('Enter number');
 
@@ -32,14 +32,44 @@ console.log(doSomething(2, 6)) */
 /* 2. Дана строка вида 'var_text_hello'. Сделайте из него текст 'varTextHello'.
 Для этого сделайте вспомогательную функцию ucfirst, которая будет получать строку, делать первый символ этой строки заглавным и возвращать обратно строку с заглавной первой буквой. */
 
-let str = 'var_text_hello';
-
+/* let str = 'var_text_hello';
 let arr = str.split('_');
 
 for (let i = 0; i < arr.length; i++) {
     if (i != 0) arr[i] = ucfirst(arr[i]);
 }
-console.log(arr.join(''));
-function ucfirst(str) {
-    return str[0].toUpperCase() + str.slice(1);
+
+function ucfirst(string) {
+    return string[0].toUpperCase() + string.slice(1);
 }
+console.log(arr.join('')); */
+
+/* 3. Реализуйте функцию flatten(), которая в случае, если массив обладает уровнями вложенности, приведёт его к элементарному виду (вложенность может быть любой глубины). Пример: flatten([1, [2], [3, [4]]]) вернёт [1, 2, 3, 4] */
+
+let arr = [1, [2], [3, [4]]];
+
+function flatten(arr) {
+    let res = arr.join(',').split(',');
+    for (let i = 0; i < res.length; i++) {
+        res[i] = +res[i];
+    }
+    return res;
+}
+console.log(flatten(arr));
+
+/* 4. Дана строка, например, '123456'. Сделайте из нее '214365'.
+Если количество элементов непарное вывести ошибку. */
+
+let numbers = '123456';
+
+function changePosition(str) {
+    if (str.length % 2 === 0) {
+        let arr = str.split('');
+        for (let i = 0; i < arr.length; i += 2) {
+            [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        }
+        return arr.join('');
+    }
+    return 'Error'
+}
+console.log(changePosition(numbers)); 
